@@ -65,20 +65,60 @@
 // console.dir(person1);
 // console.dir(Employee1);
 
-function creatAdder(incrementor) {
-  // const random = 123;
-  return (number) => number + incrementor;
+// window.bala = "I am bla bla";
+
+// function creatAdder(incrementor) {
+//   return (number) => number;
+// }
+
+// // const add5New = (number) => number + 5;
+
+// const add5 = creatAdder(5);
+// const add20 = creatAdder(20);
+// // console.dir(add5New);
+// console.dir(add5);
+// console.dir(add20);
+
+// console.log(add5(20));
+// console.log(add20(10));
+
+// timeout id;
+// setTimeout(() => {
+//   // what ever I want
+// }, timeout);\
+
+// const timeoutID = setTimeout(() => {
+//   console.log("BOOM");
+// }, 5000);
+
+// const timeoutID2 = setInterval(() => {
+//   console.log("blink");
+// }, 1000);
+
+// setTimeout(() => {
+//   clearTimeout(timeoutID2);
+// }, 10000);
+
+// console.log("this will happen immediately");
+
+// clearTimeout(timeoutID);
+
+function debounce(func, timeout = 300) {
+  let timeoutID;
+  return () => {
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout(() => {
+      func();
+    }, timeout);
+  };
 }
+// function saveInput(){
+//   console.log('Saving data');
+// }
+const processChange = debounce(() => {
+  console.log("Save Draft");
+},5000);
 
-const add5New = (number) => number + 5;
+console.dir(processChange);
 
-const add5 = creatAdder(5);
-
-console.dir(creatAdder(5))
-// console.dir(add5New);
-console.dir(add5);
-
-console.log(add5(20));
-console.log(add5New(20));
-const add20 = creatAdder(20);
-console.log(add20(20));
+processChange();
